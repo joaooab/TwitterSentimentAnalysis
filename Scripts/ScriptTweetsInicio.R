@@ -1,6 +1,11 @@
+#Se não tiver biblioteca necessário instalar 
+#install.packages('tm')
 library(tm)
-tweetsBolso <- read.csv("~/Desktop/tweetsBolsoFormatado.csv", stringsAsFactors = FALSE, sep = ';')
-tweets <- tweetsBolso$text
+
+#Nao preicisa fazer o comando abaixo se tiver importado a base via interface
+tweetsBolsoFormatado <- read.csv("~/Desktop/tweetsBolsoFormatado.csv", stringsAsFactors = FALSE, sep = ';')
+tweets <- tweetsBolsoFormatado$text
+#head(tweets, 5) se quiser verificar os tweets no formato texto.
 tweets_source <- VectorSource(tweets)
 tweets_corpus <- VCorpus(tweets_source)
 
