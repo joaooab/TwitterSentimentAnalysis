@@ -1,0 +1,40 @@
+#instala os pacotes
+install.packages(“tm”)
+library(tm) #Caso houver o seguinte erro na instalaçao: "Configuration failed because libxml-2.0 was not found". Rodar no terminal: sudo apt-get install libxml2-dev
+
+#lê o arquivo csv
+tweets4 <- read.csv("~/Desktop/tweets4.csv", stringsAsFactors = FALSE)
+#converte para texto
+tweets <- tweets4$text
+#mostra os cinco primeiros tweets
+head(tweets, 5) 
+
+#cria uma coleção de documentos
+tweets_source <- VectorSource(tweets)
+tweets_corpus <- VCorpus(tweets_source)
+
+#faz o tratamento dos dados 
+install.packages("stopwords") #instale a biblioteca se não existir
+
+#crie a seguinte função e execute a mesma (run)
+
+clean_corpus <- function(corpus){
+  corpus <- tm_map(corpus, stripWhitespace) #remove tabulações
+  corpus <- tm_map(corpus, removePunctuation) #remove acentuações
+  corpus <- tm_map(corpus, content_transformer(tolower)) #transforma plavras do texto em minúsculo
+  corpus <- tm_map(tweets_corpus, removeNumbers) #remove números
+  tm_map(tweets_corpus, content_transformer(removeWords), "text") # "Remove a tag text" 
+  corpus <- tm_map(tweets_corpus, content_transformer(removeWords), stopwords::stopwords("pt", source = "snowball")) #remover stopwords pt-br
+  
+  return(corpus)
+}
+
+#cria matriz 
+ccorpus <- Corpus(VectorSource(ccorpus))
+msg_mtd <- DocumentTermMatrix(ccorpus)
+
+
+#cria tabela de frequência de atributos
+library(qdap) #Caso houver  o seguinte erro na instalaçao: OpenSSL library required. Rode no terminal: sudo apt-get install libssl-dev
+tweets_wfm <- wfm(tweets)
+
