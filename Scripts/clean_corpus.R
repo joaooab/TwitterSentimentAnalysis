@@ -16,3 +16,6 @@ clean_corpus_regex <- function(corpus){
   
   return(corpus)
 }
+
+#Mais stopwords
+#c <- c('vai','pra','ser','aqui','pro','via','tudo','gente','ter','sobre','todos','cara','falar','quer','diz','porque','dia','pode','ver','ainda','agora','fala','sabe', 'vou', 'aqui', 'vão', 'nao', 'uma', 'tão', 'todo')
