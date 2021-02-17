@@ -1,5 +1,5 @@
 # TwitterSentimentAnalysis
-Twitter Sentiment Analysis whit R
+Twitter Sentiment Analysis whit R and Python
 
 ## Bacharel
 
